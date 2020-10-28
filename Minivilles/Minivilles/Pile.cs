@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Minivilles
 {
-    class Pile
+    public class Pile
     {
 
         private Dictionary<CARD_ID, int> cartes;
