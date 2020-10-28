@@ -50,7 +50,7 @@ namespace Minivilles
             Des[0].Lancer();
             p2.TesterCartesJoueur(p1, Des[0].Face, false);
             p1.TesterCartesJoueur(p2, Des[0].Face, true);
-            p1.strategy.ChoisirCarte();
+            p1.strategy.ChoisirCarte(p1, p2, CartesDisponibles);
         }
     }
 }
