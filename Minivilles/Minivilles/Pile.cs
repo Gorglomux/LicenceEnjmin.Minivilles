@@ -24,6 +24,13 @@ namespace Minivilles
         {
             cartes[ID] -= 1;
         }
-
+        public Pile()
+        {
+            cartes = new Dictionary<CARD_ID, int>();
+        }
+        public void ajouterCarte(CARD_ID ID, int amount)
+        {
+            cartes[ID] = amount;
+        }
     }
 }
