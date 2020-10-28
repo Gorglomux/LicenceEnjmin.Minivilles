@@ -28,7 +28,7 @@ namespace Minivilles
             this.couleur = c.couleur;
             this.nom = c.nom;
             this.descriptionEffet = c.descriptionEffet;
-            this.valeurActivation = new List<int>(valeurActivation);
+            this.valeurActivation = new List<int>(c.valeurActivation);
             ID = c.ID;
         }
     }
