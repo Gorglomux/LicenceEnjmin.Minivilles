@@ -14,10 +14,24 @@ namespace Minivilles
             { CARD_ID.CHAMP_BLE, (p1, p2) => { p1.argent++; } },
             { CARD_ID.FERME, (p1, p2) => { p1.argent++; } },
             { CARD_ID.BOULANGERIE, (p1, p2) => { p1.argent += 2; } },
-            { CARD_ID.CAFE, (p1, p2) => { p1.argent ++; p2.argent--; } },
+            { CARD_ID.CAFE, (p1, p2) => { 
+                if(p2.argent > 0)
+                {
+                    p1.argent ++; p2.argent--;
+
+                }
+            } },
             { CARD_ID.SUPERETTE, (p1, p2) => { p1.argent +=3;} },
             { CARD_ID.FORET, (p1, p2) => { p1.argent ++;} },
-            { CARD_ID.RESTAURANT, (p1, p2) => { p1.argent += 2; p2.argent -= 2; } },
+            { CARD_ID.RESTAURANT, (p1, p2) => {
+                if(p2.argent > 2)
+                {
+                    p1.argent += 2; p2.argent -= 2;
+                }else if (p2.argent > 0)
+                {
+                    p1.argent += p2.argent; p2.argent = 0;
+                }
+            } },
             { CARD_ID.STADE, (p1, p2) => { p1.argent += 4; } },
 
         };
@@ -32,6 +46,12 @@ namespace Minivilles
             { CARD_ID.FORET, new Card(2,COULEUR.BLEU,"Forêt","Recevez 1 pièce",new List<int>(){5},CARD_ID.FORET)},
             { CARD_ID.RESTAURANT, new Card(4,COULEUR.ROUGE,"Restaurant","Recevez 2 pièce du joueur qui a lancé le dé",new List<int>(){5},CARD_ID.RESTAURANT)},
             { CARD_ID.STADE, new Card(6,COULEUR.BLEU,"Stade","Recevez 4 pièce",new List<int>(){6},CARD_ID.STADE)}
+        };
+
+        public static List<Card> cartesDeBase = new List<Card>()
+        {
+            new Card(CardInfo[CARD_ID.CHAMP_BLE]),
+            new Card(CardInfo[CARD_ID.BOULANGERIE])
         };
     }
 }
