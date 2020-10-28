@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Minivilles
@@ -10,11 +11,38 @@ namespace Minivilles
         public Pile CartesDisponibles;
         public List<Player> Joueurs;
 
-        public Game(List<Die> des, Pile cartes, List<Player> joueurs)
+        public Game()
         {
-            Des = des;
-            CartesDisponibles = cartes;
-            Joueurs = joueurs;
+            //Création des dés
+            Des = new List<Die>();
+            Des.Add(new Die());
+            Des.Add(new Die());
+
+
+            Joueurs = new List<Player>()
+            {
+                new Player(new IAStrategy(), new List<Card>(Globals.cartesDeBase )),
+                new Player(new IAStrategy(), new List<Card>(Globals.cartesDeBase ))
+            };
+
+            //Initialisation de la pile de cartes
+            CartesDisponibles = new Pile();
+
+            foreach (CARD_ID id in Globals.CardInfo.Keys)
+            {
+                CartesDisponibles.ajouterCarte(id, 6);
+            }
+
+            //On enleve les cartes de bases selon le nombre de joueurs a la pile
+            for(int i=0; i<Joueurs.Count; i++)
+            {
+                foreach (Card c in Globals.cartesDeBase)
+                {
+                    CartesDisponibles.PrendreCarte(c.ID);
+                }
+            }
+
+            JouerPartie();
         }
 
 
@@ -33,12 +61,18 @@ namespace Minivilles
             // On vérifie s'il y a égalité
             if (Joueurs[0].argent >= 20 && Joueurs[1].argent >= 20)
             {
+                Debug.WriteLine("Egalité !");
                 gagnant = 0;
             }               
             // On vérifie si le Joueur 2 a gagné
             else if (Joueurs[1].argent >= 20)
             {
+                Debug.WriteLine("Le joueur 2 gagne !");
                 gagnant = 2;
+            }
+            else
+            {
+                Debug.WriteLine("Le joueur 1 gagne!");
             }
             return gagnant;
         }
