@@ -58,7 +58,7 @@ namespace Minivilles
         public void UtiliserCarte(Player autreJoueur, Card carte)
         {
             //On appelle la fonction contenue dans le dictionnaire des effets
-            Globals.EFFETS[carte.id](this, autreJoueur);
+            Globals.EFFETS[carte.ID](this, autreJoueur);
         }
     }
 }
