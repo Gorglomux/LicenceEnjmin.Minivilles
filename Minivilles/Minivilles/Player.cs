@@ -36,18 +36,18 @@ namespace Minivilles
 
         public void TesterCartesJoueur(Player autreJoueur, int sommeDe, bool tourJoueur)
         {
-            foreach(var i in cartesEnJeu)
+            foreach(Card i in cartesEnJeu)
             {
                 if(tourJoueur)
                 {
-                    if (sommeDe == i.valeurActivation && (i.couleur == COULEUR.BLEU || i.couleur == COULEUR.VERT))
+                    if (i.valeurActivation.Contains(sommeDe) && (i.couleur == COULEUR.BLEU || i.couleur == COULEUR.VERT))
                     {
                         UtiliserCarte(autreJoueur, i);
                     }
                 }
                 else
                 {
-                    if (sommeDe == i.valeurActivation && (i.couleur == COULEUR.BLEU || i.couleur == COULEUR.ROUGE))
+                    if ( i.valeurActivation.Contains(sommeDe) && (i.couleur == COULEUR.BLEU || i.couleur == COULEUR.ROUGE))
                     {
                         UtiliserCarte(autreJoueur, i);
                     }
@@ -57,7 +57,8 @@ namespace Minivilles
 
         public void UtiliserCarte(Player autreJoueur, Card carte)
         {
-            carte.Effet(this, autreJoueur);
+            //On appelle la fonction contenue dans le dictionnaire des effets
+            Globals.EFFETS[carte.id](this, autreJoueur);
         }
     }
 }

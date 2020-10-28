@@ -11,6 +11,6 @@ namespace Minivilles
         public string nom;
         public string descriptionEffet;
         public List<int> valeurActivation;
-        public EFFET effet;
+        public CARD_ID id;
     }
 }
