@@ -17,6 +17,7 @@ namespace Minivilles
         {
             argent = 3;
             strategy = uneStrat;
+            cartesEnJeu = new List<Card>();
             foreach(var i in carteDeBase)
             {
                 cartesEnJeu.Add(i);

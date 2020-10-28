@@ -15,7 +15,7 @@ namespace Minivilles
         [STAThread]
         static void Main()
         {
-            Debug.WriteLine("adzad");
+            Game g = new Game();
         }
     }
 }
