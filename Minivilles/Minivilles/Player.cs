@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Minivilles
 {
-    class Player
+    public class Player
     {
         public int valeurDe;
         private List<Card> _CartesEnJeu;
