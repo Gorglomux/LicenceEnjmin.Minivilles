@@ -9,7 +9,7 @@ namespace Minivilles
     public enum COULEUR {BLEU, ROUGE, VERT };
     public static class Globals
     {
-        public static Dictionary<CARD_ID, Action<string, string>> EFFETS = new Dictionary<CARD_ID, Action<string, string>>()
+        public static Dictionary<CARD_ID, Action<Player, Player>> EFFETS { get; set; } = new Dictionary<CARD_ID, Action<Player, Player>>()
         {
             { CARD_ID.CHAMP_BLE, (p1, p2) => { p1.argent++; } },
             { CARD_ID.FERME, (p1, p2) => { p1.argent++; } },
@@ -20,10 +20,6 @@ namespace Minivilles
             { CARD_ID.RESTAURANT, (p1, p2) => { p1.argent += 2; p2.argent -= 2; } },
             { CARD_ID.STADE, (p1, p2) => { p1.argent += 4; } },
 
-
         };
-
-        
-
     }
 }
