@@ -9,6 +9,10 @@ namespace Minivilles
     {
         public void ChoisirCarte(Player p1, Player p2, Pile p)
         {
+            if (p1.argent == 0)
+            {
+                return;
+            }
             Random rnd = new Random();
 
             //Liste de cartes que le joueur peut acheter
@@ -23,8 +27,9 @@ namespace Minivilles
             }
 
             //Choisit aléatoirement une carte parmi la liste de cartes 
-            Card card = canBuy.OrderBy(x => rnd.Next()).Take(0).ToList()[0];
-            p1.AcheterCarte(card, p);
+            int index = rnd.Next(0, canBuy.Count);
+
+            p1.AcheterCarte(canBuy[index], p);
         }
     }
 }
