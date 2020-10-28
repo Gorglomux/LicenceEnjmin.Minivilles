@@ -20,7 +20,16 @@ namespace Minivilles
             this.nom = nom;
             this.descriptionEffet = descriptionEffet;
             this.valeurActivation = valeurActivation;
-            ID = iD;
+            ID = id;
+        }
+        public Card(Card c)
+        {
+            this.cout = c.cout;
+            this.couleur = c.couleur;
+            this.nom = c.nom;
+            this.descriptionEffet = c.descriptionEffet;
+            this.valeurActivation = new List<int>(valeurActivation);
+            ID = c.ID;
         }
     }
 }

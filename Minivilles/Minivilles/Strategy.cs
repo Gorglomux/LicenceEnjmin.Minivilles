@@ -6,7 +6,7 @@ namespace Minivilles
 {
     public interface Strategy
     {
-        public abstract void choisirCarte(Player p1, Player p2);
+        public abstract void ChoisirCarte(Player p1, Player p2, Pile p);
 
 
     }

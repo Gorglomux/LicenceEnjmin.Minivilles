@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Minivilles
 {
-    class PlayerStrategy
+    public class PlayerStrategy
     {
+        public void ChoisirCarte(Player p1, Player p2, Pile p)
+        {
+            //A Faire selon l'interface 
+        }
+
     }
 }
