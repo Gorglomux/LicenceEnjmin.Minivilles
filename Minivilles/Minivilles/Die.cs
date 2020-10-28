@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Minivilles
 {
-    class Die
+    public class Die
     {
         public int Face;
         public Random rdn;
