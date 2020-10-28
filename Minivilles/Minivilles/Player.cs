@@ -9,7 +9,7 @@ namespace Minivilles
     {
         public int valeurDe;
         private List<Card> _CartesEnJeu;
-        public List<Card> cartesEnJeu { get { return _CartesEnJeu; } set { _CartesEnJeu = value; } }
+        public List<Card> cartesEnJeu { get { return _CartesEnJeu; } private set { _CartesEnJeu = value; } }
         public int argent;
         public Strategy strategy;
 
@@ -23,10 +23,15 @@ namespace Minivilles
             }
         }
 
-        public void AcheterCarte(Card c)
+        public void AcheterCarte(Card c, Pile p)
         {
-            cartesEnJeu.Add(c);
-            argent -= c.cout;
+            if(argent <= c.cout)
+            {
+                cartesEnJeu.Add(c);
+                argent -= c.cout;
+                //A changer
+                p.PrendreCarte(c.ID);
+            }
         }
 
         public void TesterCartesJoueur(Player autreJoueur, int sommeDe, bool tourJoueur)
@@ -52,7 +57,7 @@ namespace Minivilles
 
         public void UtiliserCarte(Player autreJoueur, Card carte)
         {
-            carte.Effet(autreJoueur);
+            carte.Effet(this, autreJoueur);
         }
     }
 }
