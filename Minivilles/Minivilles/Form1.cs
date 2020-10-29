@@ -23,6 +23,8 @@ namespace Minivilles
         public Form1()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            this.WindowState = FormWindowState.Maximized;
             g = new Game();
             foreach(COULEUR c in Enum.GetValues(typeof(COULEUR)))
             {
@@ -33,6 +35,8 @@ namespace Minivilles
             foreach (KeyValuePair<CARD_ID, int> c in g.CartesDisponibles._cartes)
             {
                 Card card = new Card(Globals.CardInfo[c.Key]);
+                card.cb.Size = new Size(200, 200);
+                card.cb.SizeMode = PictureBoxSizeMode.StretchImage;
                 card.cb.amount = c.Value;
                 card.cb.Click += new EventHandler((Object sender, EventArgs args) => {
                     //Achète une carte 
@@ -41,13 +45,13 @@ namespace Minivilles
                 switch (card.couleur)
                 {
                     case COULEUR.BLEU:
-                        flowLayoutPanelPile.Controls.Add(card.cb);
+                        flowLayoutPanelPile1.Controls.Add(card.cb);
                         break;
                     case COULEUR.ROUGE:
-                        flowLayoutPanelPile.Controls.Add(card.cb);
+                        flowLayoutPanelPile2.Controls.Add(card.cb);
                         break;
                     case COULEUR.VERT:
-                        flowLayoutPanelPile.Controls.Add(card.cb);
+                        flowLayoutPanelPile2.Controls.Add(card.cb);
                         break;
                 }
             }
@@ -57,6 +61,7 @@ namespace Minivilles
                 Card card = new Card(Globals.CardInfo[c.Key]);
                 card.cb.amount = c.Value;
                 batimentsJ1[card.couleur][card.ID] = card.cb;
+                card.cb.SizeMode = PictureBoxSizeMode.StretchImage;
                 switch (card.couleur)
                 {
                     case COULEUR.BLEU:
@@ -76,6 +81,7 @@ namespace Minivilles
                 Card card = new Card(Globals.CardInfo[c.Key]);
                 card.cb.amount = c.Value;
                 batimentsJ2[card.couleur][card.ID] = card.cb;
+                card.cb.SizeMode = PictureBoxSizeMode.StretchImage;
                 switch (card.couleur)
                 {
                     case COULEUR.BLEU:
@@ -103,8 +109,8 @@ namespace Minivilles
         }
         private void updateAffichage(Object sender, PaintEventArgs args)
         {
-            label2.Text = g.Joueurs[0].argent.ToString() ;
-            label4.Text = g.Joueurs[1].argent.ToString();
+            labelArgentP1.Text = g.Joueurs[0].argent.ToString();
+            labelArgentP2.Text = g.Joueurs[1].argent.ToString();
             foreach (KeyValuePair<CARD_ID, int> c in g.Joueurs[0].cartesEnJeu._cartes)
             {
                 Card card = Globals.CardInfo[c.Key];
@@ -121,6 +127,20 @@ namespace Minivilles
                 Card card = Globals.CardInfo[c.Key];
                 pile[card.couleur][card.ID].amount = c.Value;
             }
+        }
+        private void buyButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void endTurnButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void escapeButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

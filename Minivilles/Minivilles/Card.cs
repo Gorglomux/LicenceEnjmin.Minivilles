@@ -36,8 +36,7 @@ namespace Minivilles
             ID = c.ID;
             this.cb = new CardBox();
             this.cb.ImageLocation = c.cb.ImageLocation;
-            this.cb.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.cb.Size = new Size(80, 100);
+            this.cb.Size = new Size(140, 100);
         }
     }
 }

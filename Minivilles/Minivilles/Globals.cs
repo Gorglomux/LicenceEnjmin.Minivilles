@@ -74,8 +74,8 @@ namespace Minivilles
                 Debug.Write(e.Message);
                 return null;
             }
-            cb.SizeMode = PictureBoxSizeMode.StretchImage;
-            cb.Size = new Size(80, 100);
+            //cb.SizeMode = PictureBoxSizeMode.StretchImage;
+            cb.Size = new Size(120, 100);
             return cb;
         }
     }

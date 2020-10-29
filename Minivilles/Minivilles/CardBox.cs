@@ -14,12 +14,12 @@ namespace Minivilles
         {
 
             cardAmount = new Label();
-            cardAmount.Size = new Size(80, 12);
+            cardAmount.Size = new Size(140, 20);
 
             cardAmount.Text = "x " + amount.ToString();
             Controls.Add(cardAmount);
             Paint += new PaintEventHandler((Object sender, PaintEventArgs args) => {
-                cardAmount.Location = new Point(0, Height - 22);
+                cardAmount.Location = new Point(0, Height - 26);
                 Height = Parent.Height - 3;
                 Anchor = AnchorStyles.Top;
 
