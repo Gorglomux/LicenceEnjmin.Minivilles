@@ -15,6 +15,7 @@ namespace Minivilles
         public Form1()
         {
             InitializeComponent();
+            Game game = new Game();
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -23,6 +24,21 @@ namespace Minivilles
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buyButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void endTurnButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void escapeButton_Click(object sender, EventArgs e)
         {
 
         }

@@ -15,7 +15,9 @@ namespace Minivilles
         [STAThread]
         static void Main()
         {
-            Game g = new Game();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
         }
     }
 }
