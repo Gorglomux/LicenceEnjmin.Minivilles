@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Minivilles
@@ -31,6 +32,16 @@ namespace Minivilles
             this.descriptionEffet = c.descriptionEffet;
             this.valeurActivation = new List<int>(c.valeurActivation);
             ID = c.ID;
+        }
+
+        public  string AfficheValeur()
+        {
+            string tostring = "";
+            foreach (int val in valeurActivation)
+            {
+                tostring += String.Format("{0},", val);
+            }
+            return tostring;
         }
     }
 }

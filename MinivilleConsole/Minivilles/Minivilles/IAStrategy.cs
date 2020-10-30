@@ -14,18 +14,18 @@ namespace Minivilles
             }
             Random rnd = new Random();
 
-            //Liste de cartes que le joueur peut acheter
+            //Liste de cartes que l'IA peut acheter
             List<Card> canBuy = new List<Card>();
             foreach (CARD_ID c in p._cartes.Keys)
             {
-                //Si il reste un exemplaire de la carte
+                //S'il reste un exemplaire de la carte
                 if (p._cartes[c] > 0 && p1.argent >= Globals.CardInfo[c].cout)
                 {
                     canBuy.Add(new Card(Globals.CardInfo[c]));
                 }
             }
 
-            //Choisit aléatoirement une carte parmi la liste de cartes "
+            //Choisit aléatoirement une carte parmi la liste de cartes
 
             int index = rnd.Next(0, canBuy.Count);
             if (canBuy.Count > 0)

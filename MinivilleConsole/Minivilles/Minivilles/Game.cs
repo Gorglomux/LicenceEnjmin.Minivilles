@@ -70,6 +70,7 @@ namespace Minivilles
                 if (Joueurs[0].argent >= 20)
                     break;
                 Console.Clear();
+
                 //Tour joueur 2
                 Console.WriteLine("TOUR DE L'ADVERSAIRE");
                 Console.WriteLine("Valeur du dé : {0}\n", Des[0].Lancer());
@@ -103,8 +104,5 @@ namespace Minivilles
             return gagnant;
 
         }
-
-
-
     }
 }

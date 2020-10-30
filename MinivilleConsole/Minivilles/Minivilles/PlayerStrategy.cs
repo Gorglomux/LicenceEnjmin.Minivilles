@@ -14,7 +14,7 @@ namespace Minivilles
             {
                 if (c.Value != 0)
                 {
-                    Console.WriteLine("{0} | couleur : {1} | nombre : {2}", c.Key, Globals.CardInfo[c.Key].couleur, c.Value);
+                    Console.WriteLine("{0} | Couleur : {1} | Activation : {4} | Effet : {2} | Nombre : {3}", c.Key, Globals.CardInfo[c.Key].couleur, Globals.CardInfo[c.Key].descriptionEffet, c.Value, Globals.CardInfo[c.Key].AfficheValeur());
                 }
             }
 
@@ -23,7 +23,7 @@ namespace Minivilles
             {
                 if(c.Value != 0)
                 {
-                    Console.WriteLine("{0} | couleur : {1} | nombre : {2}", c.Key, Globals.CardInfo[c.Key].couleur, c.Value);
+                    Console.WriteLine("{0} | Couleur : {1} | Activation : {4} | Effet : {2} | Nombre : {3}", c.Key, Globals.CardInfo[c.Key].couleur, Globals.CardInfo[c.Key].descriptionEffet, c.Value, Globals.CardInfo[c.Key].AfficheValeur());
                 }              
             }
             
@@ -31,7 +31,7 @@ namespace Minivilles
             string ouput = Console.ReadLine();
             if(ouput == "o")
             {
-                if (p1.argent == 0 || p1.argent > 12)
+                if (p1.argent == 0)
                 {
                     Console.WriteLine("Désolé, vous n'avez plus d'argent !\n");
                     return;
@@ -40,7 +40,7 @@ namespace Minivilles
                 List<Card> canBuy = new List<Card>();
                 foreach (CARD_ID c in p._cartes.Keys)
                 {
-                    //Si il reste un exemplaire de la carte
+                    //S'il reste un exemplaire de la carte
                     if (p._cartes[c] > 0 && p1.argent >= Globals.CardInfo[c].cout)
                     {
                         canBuy.Add(new Card(Globals.CardInfo[c]));
@@ -50,7 +50,7 @@ namespace Minivilles
                 Console.WriteLine("Vous pouvez acheter :");
                 for(int i = 0; i < canBuy.Count; i++)
                 {
-                    Console.WriteLine("{0} : {1} couleur : {2} Cout : {3}", i, canBuy[i].nom, canBuy[i].couleur,canBuy[i].cout);
+                    Console.WriteLine("{0} : {1} | Couleur : {2} | Cout : {3} | Activation : {4} | Effet : {5}", i, canBuy[i].nom, canBuy[i].couleur, canBuy[i].cout, canBuy[i].AfficheValeur(), canBuy[i].descriptionEffet);
                 }
                 Console.WriteLine("\nAnnuler : a");
                 string res = Console.ReadLine();
