@@ -10,7 +10,7 @@ namespace Minivilles
     {
         public void ChoisirCarte(Player p1, Player p2, Pile p)
         {
-            if (p1.argent == 0)
+            if (p1.argent == 0 || p1.argent > 12)
             {
                 return;
             }

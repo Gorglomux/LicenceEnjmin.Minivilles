@@ -18,6 +18,8 @@ namespace Minivilles
         public Dictionary<COULEUR, Dictionary<CARD_ID, CardBox>> pile = new Dictionary<COULEUR, Dictionary<CARD_ID, CardBox>>();
 
         private Game g;
+
+        private bool buyActive = false;
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +34,9 @@ namespace Minivilles
             {
                 Card card = new Card(Globals.CardInfo[c.Key]);
                 card.cb.amount = c.Value;
+                card.cb.Click += new EventHandler((Object sender, EventArgs args) => {
+                    //Achète une carte 
+                });
                 pile[card.couleur][card.ID] = card.cb;
                 switch (card.couleur)
                 {
