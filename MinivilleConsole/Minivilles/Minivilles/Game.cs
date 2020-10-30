@@ -21,7 +21,7 @@ namespace Minivilles
             Joueurs = new List<Player>()
             {
                 new Player(new PlayerStrategy(), new List<Card>(Globals.cartesDeBase )),
-                new Player(new IAStrategy(), new List<Card>(Globals.cartesDeBase ))
+                new Player(new HardIAStrategy(), new List<Card>(Globals.cartesDeBase ))
             };
 
             //Initialisation de la pile de cartes
