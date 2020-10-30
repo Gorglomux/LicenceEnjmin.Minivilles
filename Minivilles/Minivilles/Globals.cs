@@ -9,14 +9,15 @@ using System.Windows.Forms;
 namespace Minivilles
 {
     // Définition des variables globales et des énumérations
-    public enum CARD_ID {CHAMP_BLE, FERME, BOULANGERIE, CAFE, SUPERETTE, FORET, RESTAURANT/*, STADE*/};
+    public enum CARD_ID {NULL = -1, CHAMP_BLE, FERME, BOULANGERIE, CAFE, SUPERETTE, FORET, RESTAURANT/*, STADE*/};
     public enum COULEUR {BLEU, ROUGE, VERT };
 
     
     public static class Globals
     {
+        public static Timer gameTimer = new Timer();
 
-        
+        public static CARD_ID card_chosen = CARD_ID.NULL;
         public static Dictionary<CARD_ID, Action<Player, Player>> EFFETS { get; set; } = new Dictionary<CARD_ID, Action<Player, Player>>()
         {
             { CARD_ID.CHAMP_BLE, (p1, p2) => { p1.argent++; } },

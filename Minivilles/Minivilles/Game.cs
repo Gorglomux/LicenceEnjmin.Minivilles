@@ -11,7 +11,7 @@ namespace Minivilles
         public List<Die> Des;
         public Pile CartesDisponibles;
         public List<Player> Joueurs;
-
+        public Queue<Action> instructionQueue;
         public Game()
         {
             //Création des dés
@@ -19,10 +19,10 @@ namespace Minivilles
             Des.Add(new Die());
             Des.Add(new Die());
 
-
+            instructionQueue = new Queue<Action>();
             Joueurs = new List<Player>()
             {
-                new Player(new IAStrategy(), new List<Card>(Globals.cartesDeBase )),
+                new Player(new PlayerStrategy(), new List<Card>(Globals.cartesDeBase )),
                 new Player(new IAStrategy(), new List<Card>(Globals.cartesDeBase ))
             };
 
@@ -45,12 +45,19 @@ namespace Minivilles
         }
 
 
-        public int JouerPartie()
+        public void JouerPartie()
         {
             // On donne la victoire au Joueur 1 de base
             int gagnant = 1;
             while (Joueurs[0].argent < 20 && Joueurs[1].argent < 20)
-            {   
+            {
+
+                //Si la queue d'instruction est remplie on attend
+                while (instructionQueue.Count > 0)
+                {
+
+                }
+
 
                 Tour(Joueurs[0], Joueurs[1]);
                 // On vérifie si le Joueur 1 a déjà gagné avant le tour du Joueur 2
@@ -74,7 +81,6 @@ namespace Minivilles
             {
                 Debug.WriteLine("Le joueur 1 gagne!");
             }
-            return gagnant;
 
         }
 
@@ -82,10 +88,27 @@ namespace Minivilles
         // Fonction qui permet le déroulement d'un tour
         public void Tour(Player p1, Player p2)
         {
-            Des[0].Lancer();
-            p2.TesterCartesJoueur(p1, Des[0].Face, false);
-            p1.TesterCartesJoueur(p2, Des[0].Face, true);
-            p1.strategy.ChoisirCarte(p1, p2, CartesDisponibles);
+            //Ajoute un élément dans la queue d'instructions 
+            instructionQueue.Enqueue(() => { Des[0].Lancer(); });
+            instructionQueue.Enqueue(() => { p2.TesterCartesJoueur(p1, Des[0].Face, false); });
+            instructionQueue.Enqueue(() => { p1.TesterCartesJoueur(p2, Des[0].Face, true); });
+            instructionQueue.Enqueue(() => { p1.strategy.ChoisirCarte(p1, p2, CartesDisponibles); });
+           
+        }
+
+        public void update()
+        {
+            //Enlève un élément de la queue d'instructions 
+            if (instructionQueue.Count == 0)
+            {
+                return;
+            }
+            Action a = instructionQueue.Dequeue();
+            //Execute l'action
+            ThreadStart threadDelegate = new ThreadStart(a);
+            Thread t = new Thread(threadDelegate);
+            t.Start();
+            Debug.WriteLine("Instruction done");
         }
     }
 }
