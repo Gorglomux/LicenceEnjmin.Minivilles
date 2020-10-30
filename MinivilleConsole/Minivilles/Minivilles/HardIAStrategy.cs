@@ -27,12 +27,12 @@ namespace Minivilles
             List<Card> canBuy = new List<Card>();
             foreach (CARD_ID c in p._cartes.Keys)
             {
-                //Si il reste un exemplaire de la carte
+                //S'il reste un exemplaire de la carte
                 if (p._cartes[c] > 0 && p1.argent >= Globals.CardInfo[c].cout)
                 {
                     canBuy.Add(new Card(Globals.CardInfo[c]));
-                    /*Vérifier si restaurant, superette, café, mine et verger sont encore achetable. Si ils ne sont pas achetable, le bool reste true pour faire
-                     *comme si il l'avait déjà et donc passer l'achat  
+                    /*Vérifier si restaurant, superette et café sont encore achetables. S'ils ne sont pas achetables, le bool reste true pour faire
+                     *comme s'il l'avait déjà et donc passer l'achat  
                      */
                     if (c == CARD_ID.RESTAURANT)
                     {
@@ -47,7 +47,7 @@ namespace Minivilles
                         cafe = false;
                     }
 
-                    //On vérifie si il reste des cartes bleus, rouges et vertes
+                    //On vérifie s'il reste des cartes bleus, rouges et vertes
                     if (Globals.CardInfo[c].couleur == COULEUR.BLEU)
                     {
                         bleu = true;
@@ -103,8 +103,8 @@ namespace Minivilles
                 }
             }
 
-            /* Si l'execution arrive ici, l'IA à soit dans sa main au moins un Restaurant, une Superette, un Café, une Mine, et un Verger ou alors 
-             * il ne pouvait pas les acheter. Si il ne peut les acheter, il passe son tour.
+            /* Si l'execution arrive ici, l'IA a soit dans sa main au moins un Restaurant, une Superette et un Café ou alors 
+             * il ne pouvait pas les acheter. S'il ne peut pas les acheter, il passe son tour.
              */
             if (restaut && superette && cafe && mine && verger)
             {
@@ -122,7 +122,7 @@ namespace Minivilles
                         }
                     }
                 }
-                //Si il ne peut pas acheter de bleu, il achete une rouge
+                //S'il ne peut pas acheter de bleu, il achete une rouge
                 if (rouge)
                 {
                     while (true)
@@ -135,7 +135,7 @@ namespace Minivilles
                         }
                     }
                 }
-                //Si il ne peut pas acheter de rouge, il achete une verte
+                //S'il ne peut pas acheter de rouge, il achete une verte
                 if (vert)
                 {
                     while (true)
