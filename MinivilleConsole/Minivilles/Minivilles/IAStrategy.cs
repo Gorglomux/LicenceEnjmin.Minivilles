@@ -8,7 +8,6 @@ namespace Minivilles
     {
         public void ChoisirCarte(Player p1, Player p2, Pile p)
         {
-            Console.WriteLine("Tour de l'adversaire\n");
             if (p1.argent == 0 || p1.argent > 12)
             {
                 return;

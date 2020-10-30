@@ -50,11 +50,39 @@ namespace Minivilles
             while (Joueurs[0].argent < 20 && Joueurs[1].argent < 20)
             {
 
-                Tour(Joueurs[0], Joueurs[1]);
+
+                //Tour joueur 1
+
+                Console.WriteLine("TOUR DU JOUEUR");
+                Console.WriteLine("Valeur du dé : {0}\n", Des[0].Lancer());
+
+                Console.WriteLine("Activations des cartes de l'adversaire");
+                Joueurs[1].TesterCartesJoueur(Joueurs[0], Des[0].Face, false);
+                Console.WriteLine("Activations des cartes du joueur");
+                Joueurs[0].TesterCartesJoueur(Joueurs[1], Des[0].Face, true);
+
+                Console.WriteLine("Vous avez {0} pièces", Joueurs[0].argent);
+                Console.WriteLine("Votre adversaire a {0} pièces\n", Joueurs[1].argent);
+                Joueurs[0].strategy.ChoisirCarte(Joueurs[0], Joueurs[1], CartesDisponibles);
+
+
                 // On vérifie si le Joueur 1 a déjà gagné avant le tour du Joueur 2
                 if (Joueurs[0].argent >= 20)
                     break;
-                Tour(Joueurs[1], Joueurs[0]);
+                Console.Clear();
+                //Tour joueur 2
+                Console.WriteLine("TOUR DE L'ADVERSAIRE");
+                Console.WriteLine("Valeur du dé : {0}\n", Des[0].Lancer());
+
+                Console.WriteLine("Activations des cartes du joueur");
+                Joueurs[0].TesterCartesJoueur(Joueurs[1], Des[0].Face, false);
+                Console.WriteLine("Activations des cartes de l'adversaire");
+                Joueurs[1].TesterCartesJoueur(Joueurs[0], Des[0].Face, true);
+
+                Console.WriteLine("\nVous avez {0} pièces", Joueurs[0].argent);
+                Console.WriteLine("Votre adversaire a {0} pièces\n", Joueurs[1].argent);
+                Joueurs[1].strategy.ChoisirCarte(Joueurs[1], Joueurs[0], CartesDisponibles);
+
             }
             // On vérifie s'il y a égalité
             if (Joueurs[0].argent >= 20 && Joueurs[1].argent >= 20)
@@ -77,15 +105,6 @@ namespace Minivilles
         }
 
 
-        // Fonction qui permet le déroulement d'un tour
-        public void Tour(Player p1, Player p2)
-        {
-            Console.WriteLine("Valeur du dé : {0}\n", Des[0].Lancer());
-            p2.TesterCartesJoueur(p1, Des[0].Face, false);
-            p1.TesterCartesJoueur(p2, Des[0].Face, true);
-            Console.WriteLine("Vous avez {0} pièces", p1.argent);
-            Console.WriteLine("Votre adversaire a {0} pièces\n", p2.argent);
-            p1.strategy.ChoisirCarte(p1, p2, CartesDisponibles);
-        }
+
     }
 }

@@ -36,20 +36,28 @@ namespace Minivilles
         {
             foreach (CARD_ID id in cartesEnJeu._cartes.Keys)
             {
-                Card i = Globals.CardInfo[id];
+                Card c = Globals.CardInfo[id];
                 if (tourJoueur)
                 {
 
-                    if (i.valeurActivation.Contains(sommeDe) && (i.couleur == COULEUR.BLEU || i.couleur == COULEUR.VERT))
+                    if (c.valeurActivation.Contains(sommeDe) && (c.couleur == COULEUR.BLEU || c.couleur == COULEUR.VERT))
                     {
-                        UtiliserCarte(autreJoueur, i);
+                        for(int i=0; i< cartesEnJeu._cartes[id]; i++)
+                        {
+
+                            UtiliserCarte(autreJoueur, c);
+                        }
                     }
                 }
                 else
                 {
-                    if (i.valeurActivation.Contains(sommeDe) && (i.couleur == COULEUR.BLEU || i.couleur == COULEUR.ROUGE))
+                    if (c.valeurActivation.Contains(sommeDe) && (c.couleur == COULEUR.BLEU || c.couleur == COULEUR.ROUGE))
                     {
-                        UtiliserCarte(autreJoueur, i);
+                        for (int i = 0; i < cartesEnJeu._cartes[id]; i++)
+                        {
+                            UtiliserCarte(autreJoueur, c);
+
+                        }
                     }
                 }
             }
@@ -58,6 +66,7 @@ namespace Minivilles
         public void UtiliserCarte(Player autreJoueur, Card carte)
         {
             //On appelle la fonction contenue dans le dictionnaire des effets
+            Console.WriteLine("La carte {0} s'active", carte.nom);
             Globals.EFFETS[carte.ID](this, autreJoueur);
         }
     }
