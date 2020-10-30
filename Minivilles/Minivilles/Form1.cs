@@ -127,6 +127,7 @@ namespace Minivilles
                 Card card = Globals.CardInfo[c.Key];
                 pile[card.couleur][card.ID].amount = c.Value;
             }
+
         }
         private void buyButton_Click(object sender, EventArgs e)
         {
