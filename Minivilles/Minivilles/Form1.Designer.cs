@@ -481,6 +481,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPile;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPile1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPile2;
+
     }
 }
 
