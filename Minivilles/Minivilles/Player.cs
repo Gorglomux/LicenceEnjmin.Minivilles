@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Text;
 
 namespace Minivilles
@@ -8,8 +9,7 @@ namespace Minivilles
     public class Player
     {
         public int valeurDe;
-        private List<Card> _CartesEnJeu;
-        public List<Card> cartesEnJeu { get { return _CartesEnJeu; } private set { _CartesEnJeu = value; } }
+        public Pile cartesEnJeu { get; set; }
         public int argent;
         public Strategy strategy;
 
@@ -17,30 +17,33 @@ namespace Minivilles
         {
             argent = 3;
             strategy = uneStrat;
-            cartesEnJeu = new List<Card>();
+            cartesEnJeu = new Pile();
             foreach(var i in carteDeBase)
             {
-                cartesEnJeu.Add(i);
+                cartesEnJeu.ajouterCarte(i.ID, 1);
             }
         }
 
         public void AcheterCarte(Card c, Pile p)
         {
-            if(argent <= c.cout)
+
+            
+            if (argent >= c.cout)
             {
-                cartesEnJeu.Add(c);
+                cartesEnJeu.ajouterCarte(c.ID,1);
                 argent -= c.cout;
-                //A changer
                 p.PrendreCarte(c.ID);
             }
         }
 
         public void TesterCartesJoueur(Player autreJoueur, int sommeDe, bool tourJoueur)
         {
-            foreach(Card i in cartesEnJeu)
+            foreach(CARD_ID id in cartesEnJeu._cartes.Keys)
             {
-                if(tourJoueur)
+                Card i = Globals.CardInfo[id];
+                if (tourJoueur)
                 {
+                    
                     if (i.valeurActivation.Contains(sommeDe) && (i.couleur == COULEUR.BLEU || i.couleur == COULEUR.VERT))
                     {
                         UtiliserCarte(autreJoueur, i);

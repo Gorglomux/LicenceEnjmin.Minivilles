@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Threading;
 
 namespace Minivilles
 {
@@ -41,8 +42,6 @@ namespace Minivilles
                     CartesDisponibles.PrendreCarte(c.ID);
                 }
             }
-
-            JouerPartie();
         }
 
 
@@ -51,7 +50,8 @@ namespace Minivilles
             // On donne la victoire au Joueur 1 de base
             int gagnant = 1;
             while (Joueurs[0].argent < 20 && Joueurs[1].argent < 20)
-            {
+            {   
+
                 Tour(Joueurs[0], Joueurs[1]);
                 // On vérifie si le Joueur 1 a déjà gagné avant le tour du Joueur 2
                 if (Joueurs[0].argent >= 20)
@@ -75,6 +75,7 @@ namespace Minivilles
                 Debug.WriteLine("Le joueur 1 gagne!");
             }
             return gagnant;
+
         }
 
 

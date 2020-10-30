@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -26,10 +27,14 @@ namespace Minivilles
                 }
             }
 
-            //Choisit aléatoirement une carte parmi la liste de cartes 
+            //Choisit aléatoirement une carte parmi la liste de cartes "
+            
             int index = rnd.Next(0, canBuy.Count);
-
-            p1.AcheterCarte(canBuy[index], p);
+            if (canBuy.Count > 0)
+            {
+                p1.AcheterCarte(canBuy[index], p);
+            }
+            
         }
     }
 }

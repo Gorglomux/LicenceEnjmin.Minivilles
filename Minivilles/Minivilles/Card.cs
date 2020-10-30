@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Minivilles
 {
@@ -12,8 +14,9 @@ namespace Minivilles
         public string descriptionEffet;
         public List<int> valeurActivation;
         public CARD_ID ID;
+        public CardBox cb;
 
-        public Card(int cout, COULEUR couleur, string nom, string descriptionEffet, List<int> valeurActivation, CARD_ID id)
+        public Card(int cout, COULEUR couleur, string nom, string descriptionEffet, List<int> valeurActivation, CARD_ID id,CardBox cb)
         {
             this.cout = cout;
             this.couleur = couleur;
@@ -21,6 +24,7 @@ namespace Minivilles
             this.descriptionEffet = descriptionEffet;
             this.valeurActivation = valeurActivation;
             ID = id;
+            this.cb = cb;
         }
         public Card(Card c)
         {
@@ -30,6 +34,10 @@ namespace Minivilles
             this.descriptionEffet = c.descriptionEffet;
             this.valeurActivation = new List<int>(c.valeurActivation);
             ID = c.ID;
+            this.cb = new CardBox();
+            this.cb.ImageLocation = c.cb.ImageLocation;
+            this.cb.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.cb.Size = new Size(80, 100);
         }
     }
 }
