@@ -1,7 +1,9 @@
 # LicenceEnjmin.Minivilles
  Projet Minivilles pour la Licence 
 
-## Pour jouer
+## Pour jouer à  la version console
+
+Il faut utiliser le projet se trouvant dans le dossier MinivilleConsole
 
 Par défaut le mode de jeux est  : Joueur contre IAHard
 
