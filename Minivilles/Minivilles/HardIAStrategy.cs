@@ -46,14 +46,6 @@ namespace Minivilles
                     {
                         cafe = false;
                     }
-                    if (c == CARD_ID.MINE)
-                    {
-                        mine = false;
-                    }
-                    if (c == CARD_ID.VERGER)
-                    {
-                        verger = false;
-                    }
 
                     //On vérifie si il reste des cartes bleus, rouges et vertes
                     if(Globals.CardInfo[c].couleur == COULEUR.BLEU)
@@ -88,14 +80,6 @@ namespace Minivilles
                 {
                     cafe = true;
                 }
-                if (c.ID == CARD_ID.MINE)
-                {
-                    mine = true;
-                }
-                if (c.ID == CARD_ID.VERGER)
-                {
-                    verger = true;
-                }
             }
 
             foreach(Card c in canBuy)
@@ -113,18 +97,6 @@ namespace Minivilles
                 }
 
                 if (!cafe && c.ID == CARD_ID.CAFE)
-                {
-                    p1.AcheterCarte(c, p);
-                    return;
-                }
-
-                if (!mine && c.ID == CARD_ID.MINE)
-                {
-                    p1.AcheterCarte(c, p);
-                    return;
-                }
-
-                if (!verger && c.ID == CARD_ID.VERGER)
                 {
                     p1.AcheterCarte(c, p);
                     return;
